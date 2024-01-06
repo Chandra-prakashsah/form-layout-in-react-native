@@ -49,9 +49,9 @@ const Form = () => {
   options.country = countryData;
   options.city=cityData;
   options.state=stateData;
-  // defaultValues.country="India";
-  // defaultValues.state="Eng";
-  // defaultValues.city="Motihari";
+  defaultValues.country="India";
+  defaultValues.state="Eng";
+  defaultValues.city="Motihari";
   return (
     <View>
       <FormLayout
