@@ -1,6 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View,LogBox } from 'react-native';
-import FormLayout from './src/components/form-layout';
+import { StyleSheet, View,LogBox } from 'react-native';
 import Form from './src/screens';
 LogBox.ignoreAllLogs();
 export default function App() {

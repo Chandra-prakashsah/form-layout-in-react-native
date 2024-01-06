@@ -1,12 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 import { Dropdown } from "react-native-element-dropdown";
-interface IDropdownProps {
-  placeholder: string;
-  selectedValue: any;
-  handleChange: any;
-  option: Array<any>;
-}
 const DropdownComponent = ({onChange,option, ...props}:any) => {
   return (
     <Dropdown

@@ -83,7 +83,7 @@ export const options = {
 }
 export const defaultValues = {
   name: "chandra",
-  email: "cp@gmail.com",
+  email: "cps@gmail.com",
   password: "t",
   confirmPassword: "t",
   country: "India",

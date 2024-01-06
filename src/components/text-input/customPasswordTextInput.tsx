@@ -1,11 +1,5 @@
 import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
-interface ITextInputProps {
-  value: string;
-  handleChange: any;
-  placeholder:string,
-  name:string,
-}
 const CustomPasswordTextInput = ({ onChange,name, ...props}: any) => {
   const [show,hide]=useState(true)
   const handleEyeIcon=(name:string)=>{

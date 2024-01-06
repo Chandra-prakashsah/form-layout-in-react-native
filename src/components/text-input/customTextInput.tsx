@@ -1,11 +1,5 @@
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
-interface ITextInputProps {
-  value: string;
-  handleChange: any;
-  placeholder:string,
-  name:string,
-}
+import { StyleSheet, View, TextInput } from "react-native";
+import React from "react";
 const CustomTextInput = ({ onChange, ...props}: any) => {
 
   return (

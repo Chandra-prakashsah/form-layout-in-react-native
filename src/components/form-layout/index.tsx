@@ -4,9 +4,6 @@ import {
   View,
   Text,
   Button,
-  TouchableOpacity,
-  TextInput,
-  Alert,
   FlatList,
 } from "react-native";
 import React, { useState } from "react";
