@@ -13,7 +13,7 @@ import { useForm, Controller } from "react-hook-form";
 import CustomPasswordTextInput from "../text-input/customPasswordTextInput";
 
 const FormLayout = (props: any) => {
-  const { defaultValues, fromFields, options, formControls: { control, handleSubmit }, handleFormSubmit } = props;
+  const { defaultValues, fromFields, options, formControls: { control, handleSubmit }, handleFormSubmit ,buttons} = props;
 
   return (
     <View>
@@ -76,8 +76,11 @@ const FormLayout = (props: any) => {
           )
         }}
       />
-      < View style={{ marginTop: 20 }}>
-        <Button title="Submit" onPress={handleSubmit(handleFormSubmit)} />
+      <View style={{marginTop:30}}>
+        {
+          buttons
+        }
+        {/* <Button title="Submit" onPress={handleSubmit(handleFormSubmit)} /> */}
       </View >
     </View>
   )

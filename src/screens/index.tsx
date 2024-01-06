@@ -1,12 +1,21 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+  Alert,
+  Button,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import FormLayout from "../components/form-layout";
-import { fromLayoutData, options,defaultValues } from "../constant/form-layout-fields";
-import * as Yup from "yup";
+import {
+  fromLayoutData,
+  options,
+  defaultValues,
+} from "../constant/form-layout-fields";
 import { useForm } from "react-hook-form";
 const Form = () => {
-  
-  const { control, handleSubmit, watch, setValue, trigger } = useForm({
+  const { control, handleSubmit, watch, setValue, trigger, reset } = useForm({
     mode: "all",
   });
 
@@ -21,12 +30,20 @@ const Form = () => {
   ]);
 
   useEffect(() => {
-    console.log({ name, password, confirmPassword, email,country,state,city });
+    console.log({
+      name,
+      password,
+      confirmPassword,
+      email,
+      country,
+      state,
+      city,
+    });
 
     if (confirmPassword) {
       trigger("confirmPassword");
     }
-  }, [name, password, confirmPassword, email,country,state,city]);
+  }, [name, password, confirmPassword, email, country, state, city]);
 
   const countryData = [
     { label: "India", value: "1" },
@@ -47,11 +64,39 @@ const Form = () => {
     console.log("-->", values);
   };
   options.country = countryData;
-  options.city=cityData;
-  options.state=stateData;
-  defaultValues.country="India";
-  defaultValues.state="Eng";
-  defaultValues.city="Motihari";
+  options.city = cityData;
+  options.state = stateData;
+  defaultValues.country = "India";
+  defaultValues.state = "Eng";
+  defaultValues.city = "Motihari";
+
+  const formReset = (event:any) => {
+    event.persist();
+    reset();
+  };
+
+  const button = (
+    <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+      <TouchableOpacity
+        onPress={handleSubmit(handleFormSubmit)}
+        style={[styles.btnStyle, styles.backgroundGreen]}
+      >
+        <Text style={styles.btnText}>Save</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => Alert.alert("cancelled")}
+        style={[styles.btnStyle, styles.backgroundRed]}
+      >
+        <Text style={styles.btnText}>Cancel</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={formReset}
+        style={[styles.btnStyle, styles.backgroundBlue]}
+      >
+        <Text style={styles.btnText}>Reset</Text>
+      </TouchableOpacity>
+    </View>
+  );
   return (
     <View>
       <FormLayout
@@ -60,6 +105,7 @@ const Form = () => {
         options={options}
         formControls={{ control, handleSubmit }}
         handleFormSubmit={handleFormSubmit}
+        buttons={button}
       />
     </View>
   );
@@ -67,4 +113,31 @@ const Form = () => {
 
 export default Form;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  btnContainer: {
+    flex: 1,
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+  },
+  btnStyle: {
+    width: "33%",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+    padding: 10,
+  },
+  btnText: {
+    fontSize: 16,
+    color: "#ffffff",
+  },
+  backgroundRed: {
+    backgroundColor: "red",
+  },
+  backgroundGreen: {
+    backgroundColor: "green",
+  },
+  backgroundBlue: {
+    backgroundColor: "blue",
+  },
+});
